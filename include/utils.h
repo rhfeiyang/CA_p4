@@ -18,6 +18,69 @@
 #define BUTTON_1 GPIO_PIN_6
 #define BUTTON_2 GPIO_PIN_7
 
+#pragma region Button_input
+
+typedef struct{
+    int down;
+    int right;
+    int left;
+    int up;//CTR
+    int confirm;//sw1
+    int isPulled; //whether a button is pulled down or not
+} Button_input;
+void Button_input_initialize(Button_input* input);
+void Button_input_update(Button_input* input);
+
+
+#pragma endregion
+
+
+#pragma region Data
+
+typedef enum{
+    human,
+    box,
+    obstacle,
+    target,
+    box_target
+    //and more? blank cell? or footprint?
+}Item_type;
+
+typedef struct{
+    int px;
+    int py;
+    Item_type type;
+}Item;
+
+
+typedef struct{
+    Item items; //all the elements' information are here(type+pos?)
+    int num_of_boxes;
+    //And more?
+}Data;
+
+
+void Data_initialize(Data* data);
+void Data_update(Data* data);
+
+#pragma endregion
+
+#pragma region State
+typedef enum{
+    Select_stage;
+    Playing;
+    Winning;
+    //Losing?
+};
+
+#pragma endregion
+
+
+
+
+
+
+
 #elif BOARD_VER == 1
 
 #define JOY_LEFT GPIO_PIN_13

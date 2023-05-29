@@ -10,43 +10,66 @@ void Inp_init(void)
     gpio_init(GPIOA, GPIO_MODE_IPD, GPIO_OSPEED_50MHZ, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_6);
     gpio_init(GPIOC, GPIO_MODE_IPD, GPIO_OSPEED_50MHZ, GPIO_PIN_13);
 }
-
 void IO_init(void)
 {
     Inp_init(); // inport init
     Lcd_Init(); // LCD init
 }
 
-int main(void)
-{
+typedef struct{
+    Button_input input; //This is the struct which stores whether a certain kind of button is pulled.
+    Data data;// game data(box character target…… )
+    State state; //game state(win or lose……）
+    int level; //game level
+}Game;
+
+
+void Game_init(Game* game){ //make sure all the data and input are plain/zero + level selection
+    Button_input_initialize(game->input);
+    game->state = Select_stage;
+    /*TODO：and initialize all data……*/
+
+
+    /*level selection */
+    //At this stage, we will get the level information, and set (level number+ # of boxes) to our game.
+    int level,num_of_boxes;
+    /*TODO： get the above two int*/
+
+    game->level = level;
+    game->data.num_of_boxes = num_of_boxes;
+
+
+}
+void Game_update(Game* game){
+    Button_input_update(game->input);
+    /*TODO：and more……*/
+}
+
+int main(void) {
     IO_init();         // init OLED
-    // YOUR CODE HERE
-    while (1)
-    {
-        LCD_Clear(BLACK);
-        LCD_ShowString(60,25,"TEST",WHITE);
-        if (Get_Button(JOY_LEFT))
-        {
-            LCD_ShowString(5,25,"L", BLUE);
-            //continue;
-        }
-        if (Get_Button(JOY_DOWN))
-        {
-            LCD_ShowString(25,45,"D", BLUE);
-        }
-        LCD_ShowString(5,5,"U:INOP",RED);
-        if (Get_Button(JOY_RIGHT))
-        {
-            LCD_ShowString(45,25,"R", BLUE);
-        }
-        if (Get_Button(JOY_CTR))
-        {
-            LCD_ShowString(25,25,"C", BLUE);
-        }
-        if (Get_Button(BUTTON_1))
-        {
-            LCD_ShowString(60,5,"SW1", BLUE);
-        }
-        LCD_ShowString(60,45,"SW2:INOP",RED);
+
+#pragma region welcome
+/*TODO：display a smooth animation along with the game's title.*/
+#pragma endregion
+
+
+
+
+#pragma region init
+/*This includes:initialize the newly created game's data/input + choose level and set the number of boxes*/
+    Game game;
+    Game* game_ptr = &game;
+    Game_init(game_ptr);
+
+#pragma endregion
+
+
+#pragma region Process_update
+
+    while (1) {
+        Game_update(&game);
     }
+
+#pragma endregion
+
 }
