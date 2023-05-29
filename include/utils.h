@@ -40,21 +40,25 @@ void Button_input_update(Button_input* input);
 typedef enum{
     human,
     box,
-    obstacle,
+    obstacle, //Only obstacle will not change in a certain level
     target,
     box_target
     //and more? blank cell? or footprint?
 }Item_type;
 
 typedef struct{
-    int px;
+    int px;  //position
     int py;
     Item_type type;
 }Item;
 
+typedef struct{
+
+}Items;
+
 
 typedef struct{
-    Item items; //all the elements' information are here(type+pos?)
+    Items items; //How to manage these items?
     int num_of_boxes;
     //And more?
 }Data;
