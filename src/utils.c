@@ -85,7 +85,7 @@ void Button_input_update(Button_input* input){
     input->right = Get_Button(JOY_RIGHT);
     input->left = Get_Button(JOY_LEFT);
     input->up = Get_Button(JOY_CTR);
-    input->confrim = Get_Button(BUTTON_1);
+    input->confirm = Get_Button(BUTTON_1);
     if(input->down || input->right || input->left || input->up || input->confirm){
         input->isPulled = 1;
     }else{

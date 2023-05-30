@@ -18,7 +18,6 @@
 #define BUTTON_1 GPIO_PIN_6
 #define BUTTON_2 GPIO_PIN_7
 
-#pragma region Button_input
 
 typedef struct{
     int down;
@@ -31,11 +30,6 @@ typedef struct{
 void Button_input_initialize(Button_input* input);
 void Button_input_update(Button_input* input);
 
-
-#pragma endregion
-
-
-#pragma region Data
 
 typedef enum{
     human,
@@ -67,17 +61,13 @@ typedef struct{
 void Data_initialize(Data* data);
 void Data_update(Data* data);
 
-#pragma endregion
 
-#pragma region State
-typedef enum{
-    Select_stage;
-    Playing;
-    Winning;
+typedef enum {
+    Select_stage,
+    Playing,
+    Winning
     //Losing?
-};
-
-#pragma endregion
+}State;
 
 
 
