@@ -16,19 +16,14 @@ void IO_init(void)
     Lcd_Init(); // LCD init
 }
 
-typedef struct{
-    Button_input input; //This is the struct which stores whether a certain kind of button is pulled.
-    Data data;// game data(box character target…… )
-    State state; //game state(win or lose……）
-    int level; //game level
-}Game;
+
 
 
 void Game_init(Game* game){ //make sure all the data and input are plain/zero + level selection
-    Button_input_initialize(game->input);
+    Button_input_initialize(&game->input);
     game->state = Select_stage;
     /*TODO：and initialize all data……*/
-
+    
 
     /*level selection */
     //At this stage, we will get the level information, and set (level number+ # of boxes) to our game.

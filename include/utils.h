@@ -18,6 +18,56 @@
 #define BUTTON_1 GPIO_PIN_6
 #define BUTTON_2 GPIO_PIN_7
 
+#define Board_w 20
+#define Board_h 10
+#define block_size 8
+#define play_pos_x 10
+#define play_pos_y 10
+// Here empty must be 0
+Item_type level1[Board_h][Board_w]={
+    {0  ,0  ,0  ,0  ,0  ,0  ,tar,0  ,0  ,0  ,0  ,0  ,0  ,0  ,tar,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,obs,0  ,0  ,0  ,0  ,0  ,box,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,obs,box,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+};
+Item_type level2[Board_h][Board_w]={
+    {0  ,0  ,0  ,0  ,0  ,0  ,tar,0  ,0  ,0  ,tar  ,0  ,0  ,0  ,tar,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,obs,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,obs,0  ,0  ,0  ,0  ,obs,box,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,obs,box,0  ,0  ,0  ,obs,obs,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,box,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+};
+
+Item_type level3[Board_h][Board_w]={
+    {0  ,0  ,0  ,0  ,0  ,0  ,tar,0  ,0  ,0  ,tar  ,0  ,0  ,0  ,tar,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,obs,0  ,0  ,0  ,0  ,0},
+    {tar,0  ,0  ,0  ,0  ,0  ,0  ,obs,0  ,0  ,0  ,0  ,obs,box,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,obs,obs,box,0  ,0  ,0  ,obs,obs,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,obs,0  ,0  ,0  ,0  ,0  ,0  ,0  ,box,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,obs,box,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+    {0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0  ,0},
+};
+
+typedef struct{
+    Button_input input; //This is the struct which stores whether a certain kind of button is pulled.
+    Data data;// game data(box character target…… )
+    State state; //game state(win or lose……）
+    int level; //game level
+}Game;
 
 typedef struct{
     int down;
@@ -27,18 +77,28 @@ typedef struct{
     int confirm;//sw1
     int isPulled; //whether a button is pulled down or not
 } Button_input;
+
+
 void Button_input_initialize(Button_input* input);
 void Button_input_update(Button_input* input);
 
 
 typedef enum{
-    human,
-    box,
-    obstacle, //Only obstacle will not change in a certain level
-    target,
+    emp=0,  //0ty
+    pla,    //player
+    box,    //box
+    obs, //obstacle, Only obstacle will not change in a certain level
+    tar,    //target
     box_target
     //and more? blank cell? or footprint?
 }Item_type;
+
+typedef enum {
+    Select_stage,
+    Playing,
+    Winning
+    //Losing?
+}State;
 
 typedef struct{
     int px;  //position
@@ -46,13 +106,9 @@ typedef struct{
     Item_type type;
 }Item;
 
-typedef struct{
-
-}Items;
-
 
 typedef struct{
-    Items items; //How to manage these items?
+    Item* items; //How to manage these items?
     int num_of_boxes;
     //And more?
 }Data;
@@ -62,12 +118,6 @@ void Data_initialize(Data* data);
 void Data_update(Data* data);
 
 
-typedef enum {
-    Select_stage,
-    Playing,
-    Winning
-    //Losing?
-}State;
 
 
 
