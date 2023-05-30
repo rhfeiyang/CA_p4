@@ -1,15 +1,41 @@
 #include "utils.h"
 #include "gd32vf103_libopt.h"
-
+#include "sys/time.h"
 /* -----------------------------
  Description: Return 1 if button number ch is pressed
  			  Return 0 otherwise
 ----------------------------- */
+struct timeval timstr;
+float get_time(void)
+{
+  gettimeofday(&timstr, NULL);
+  return (timstr.tv_sec + (timstr.tv_usec / 1000000.0));
+}
+
+int last = -1;
+float last_time = 0;
 int Get_Button(int ch)
 {
-    /*maybe we can acheive Input Keys Debouncing in the Button_input_update function */
-    return (int)(gpio_input_bit_get(GPIOA, ch));
-    /*TODO:what's the difference between GPIOA and GPIOC in the above function?*/
+  /*TODO: unchecked*/
+  /* hack for new board*/
+  /* if same button and in 0.3s, not trigger */
+  if (ch == last && get_time() - last_time < 0.3) {
+    return 0;
+  }
+  int ret;
+  /* special judge for PIN*/
+  if (ch != GPIO_PIN_13) {
+    int ret= (int) (gpio_input_bit_get(GPIOA, ch));
+  }
+  else{
+    int ret=(int)(gpio_input_bit_get(GPIOC, ch));
+  }
+  /*update last button and time*/
+  if(ret){
+    last = ch;
+    last_time = get_time();
+  }
+  return ret;
 }
 
 /* -----------------------------
