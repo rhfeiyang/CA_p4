@@ -667,6 +667,47 @@ void LCD_ShowPicture(u16 x1,u16 y1,u16 x2,u16 y2)
 		LCD_WR_DATA8(image[i]);
 	}			
 }
+enum {
+    e=0,  //empty
+    pla,    //player
+    box,    //box
+    obs, //obstacle, Only obstacle will not change in a certain level
+    tar,    //target
+    box_target, //there is a box on a target
+    player_box_target //player and a box on a target
+    //and more? blank cell? or footprint?
+}Item;
+
+void LCD_ShowPicture8x8(u16 x1,u16 y1,int type)
+{
+	// type=1: player 2:box 3:obstacle 4:target 5:box on target 6:player on box_target
+	int i;
+	LCD_Address_Set(x1,y1,x1+7,y1+7);
+	for(i=0;i<128;i++)
+	{ 	
+		// LCD_WR_DATA8(image[i*2+1]);
+		switch (type)
+		{
+		case pla:
+			LCD_WR_DATA8(grass[i]);
+			break;
+		case box:
+			LCD_WR_DATA8(chest[i]);
+			break;
+		case tar:
+			LCD_WR_DATA8(water[i]);
+			break;
+		case box_target:
+			LCD_WR_DATA8(glass_yellow[i]);
+			break;
+		case obs:
+			LCD_WR_DATA8(stone[i]);
+			break;
+		default:
+			break;
+		}
+	}			
+}
 
 void LCD_ShowLogo(void)
 {

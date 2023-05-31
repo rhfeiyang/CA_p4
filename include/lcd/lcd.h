@@ -84,6 +84,8 @@ typedef unsigned long u32;
 extern  u16 BACK_COLOR;   //Background color
 extern unsigned char image[12800];
 
+void LCD_ShowPicture8x8(u16 x1,u16 y1,int type);
+
 void LCD_Writ_Bus(u8 dat);
 void LCD_WR_DATA8(u8 dat);
 void LCD_WR_DATA(u16 dat);
