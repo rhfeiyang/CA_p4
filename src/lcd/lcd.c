@@ -410,7 +410,11 @@ void LCD_DrawPoint_big(u16 x,u16 y,u16 color)
 {
 	LCD_Fill(x-1,y-1,x+1,y+1,color);
 } 
-
+void LCD_DrawPoint_8x8(u16 x,u16 y,u16 color)
+{
+	//0,0->7,7
+	LCD_Fill(x,y,x+7,y+7,color);
+} 
 
 /******************************************************************************
 	   Function description: fill color in the specified area

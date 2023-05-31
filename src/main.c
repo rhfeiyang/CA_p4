@@ -1,7 +1,7 @@
 #include "lcd/lcd.h"
 #include <string.h>
 #include "utils.h"
-
+#include "game.h"
 void Inp_init(void)
 {
 	rcu_periph_clock_enable(RCU_GPIOA);
@@ -18,53 +18,18 @@ void IO_init(void)
 
 
 
-
-void Game_init(Game* game){ //make sure all the data and input are plain/zero + level selection
-    Button_input_initialize(&game->input);
-    game->state = Select_stage;
-    /*TODO：and initialize all data……*/
-    
-
-    /*level selection */
-    //At this stage, we will get the level information, and set (level number+ # of boxes) to our game.
-    int level,num_of_boxes;
-    /*TODO： get the above two int*/
-
-    game->level = level;
-    game->data.num_of_boxes = num_of_boxes;
-
-
-}
-void Game_update(Game* game){
-    Button_input_update(game->input);
-    /*TODO：and more……*/
-}
-
 int main(void) {
     IO_init();         // init OLED
 
-#pragma region welcome
 /*TODO：display a smooth animation along with the game's title.*/
-#pragma endregion
 
-
-
-
-#pragma region init
 /*This includes:initialize the newly created game's data/input + choose level and set the number of boxes*/
     Game game;
-    Game* game_ptr = &game;
-    Game_init(game_ptr);
+    Game_init(&game);
 
-#pragma endregion
+    // while (1) {
+    //     Game_update(&game);
+    // }
 
-
-#pragma region Process_update
-
-    while (1) {
-        Game_update(&game);
-    }
-
-#pragma endregion
 
 }
