@@ -9,7 +9,7 @@ void select_stage(int *level_ret, int *box_num_ret){
     int level=1;
     int box_num=1;
     LCD_Clear(BLACK);
-    draw_select(level,box_num);
+    draw_select(level,box_num); // draw the select
     LCD_ShowString(40,20,"Level:",WHITE);
     LCD_ShowString(40,40,"Box:",WHITE);
     LCD_ShowNum(90,20,level,2,WHITE);
@@ -48,15 +48,15 @@ int End_stage(Game* game, int scoreboard[3][4]){
     LCD_Clear(BLACK);
     // LCD_ShowString(0,10,"Steps:",WHITE);
     // LCD_ShowNum(50,10,game->data.mov_num,4,WHITE);
-    LCD_ShowString(0,0,"LV1:",WHITE);
+    LCD_ShowString(0,0,"LV1:",WHITE); //scoreboard
     if(scoreboard[0][0]!=999)  LCD_ShowNum(30,0, scoreboard[0][0],3,WHITE);
     if(scoreboard[0][1]!=999)  LCD_ShowNum(60,0, scoreboard[0][1],3,WHITE);
     if(scoreboard[0][2]!=999)  LCD_ShowNum(90,0, scoreboard[0][2],3,WHITE);
-    LCD_ShowString(0,20,"LV2:",WHITE);
+    LCD_ShowString(0,20,"LV2:",WHITE); //scoreboard
     if(scoreboard[1][0]!=999)  LCD_ShowNum(30,20,scoreboard[1][0],3,WHITE);
     if(scoreboard[1][1]!=999)  LCD_ShowNum(60,20,scoreboard[1][1],3,WHITE);
     if(scoreboard[1][2]!=999)  LCD_ShowNum(90,20,scoreboard[1][2],3,WHITE);
-    LCD_ShowString(0,40,"LV3:",WHITE);
+    LCD_ShowString(0,40,"LV3:",WHITE); //scoreboard
     if(scoreboard[2][0]!=999)  LCD_ShowNum(30,40,scoreboard[2][0],3,WHITE);
     if(scoreboard[2][1]!=999)  LCD_ShowNum(60,40,scoreboard[2][1],3,WHITE);
     if(scoreboard[2][2]!=999)  LCD_ShowNum(90,40,scoreboard[2][2],3,WHITE);

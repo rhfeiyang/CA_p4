@@ -1,52 +1,54 @@
 #include "game.h"
 #include "lcd/lcd.h"
 #include "welcome.h"
+// init level1
 const Item_type level1[Board_h][Board_w]={
-    {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,pla,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
+    {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs}, //comment 
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,pla,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs}, //comment
     {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs}
 };
-
+// init level2
 const Item_type level2[Board_h][Board_w]={
-    {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,obs,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,pla,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
+    {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,obs,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,pla,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},  //comment
     {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs}
 };
-
+// init level3
 const Item_type level3[Board_h][Board_w]={
-    {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,obs,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,obs,obs,e  ,e  ,e  ,e  ,obs,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,pla,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
-    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},
+    {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,obs,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,obs,obs,e  ,e  ,e  ,e  ,obs,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,obs,e  ,e  ,e  ,e  ,e  ,e  ,pla,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
+    {obs,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,e  ,obs},//comment
     {obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs,obs}
 };
 
 void Button_input_initialize(Button_input* input){
+    //init
     input->down = 0;
     input->right = 0;
     input->left = 0;
@@ -60,7 +62,7 @@ void Game_grid_init(Game* game){
     int i,j;
     const Item_type (*ref_grid) [Board_w]=NULL;
     switch (level)
-    {
+    { //init
     case 1:
         ref_grid=level1;
         break;
@@ -73,6 +75,7 @@ void Game_grid_init(Game* game){
     default:
         break;
     }
+    // copy grid
     for(i=0;i<Board_h;i++){
         for(j=0;j<Board_w;j++){
             game->data.grid[i][j]=ref_grid[i][j];
@@ -90,7 +93,7 @@ void Game_grid_init(Game* game){
             y=rand()%(Board_h-4)+2;
         }while(game->data.grid[y][x]!=e);
         game->data.grid[y][x]=box;
-        
+        //generate target
         do{
             x=rand()%(Board_w-4)+2;
             y=rand()%(Board_h-4)+2;
@@ -98,7 +101,7 @@ void Game_grid_init(Game* game){
         game->data.grid[y][x]=tar;
     }
 }
-
+// draw 8x8
 void GamePoint2LCD(int x, int y, u16 color){
     LCD_DrawPoint_8x8((x-1)*block_size,(y-1)*block_size,color);
 }
@@ -108,7 +111,7 @@ void Game_lcd_draw(Game* game){
     LCD_Clear(BLACK);
     for(i=1;i<Board_h-1;i++){
         for(j=1;j<Board_w-1;j++){
-            switch (game->data.grid[i][j])
+            switch (game->data.grid[i][j]) // draw the whole game
             {
             case obs:
                 LCD_ShowPicture8x8((j-1)*block_size,(i-1)*block_size,obs);
@@ -138,7 +141,7 @@ void Game_lcd_draw(Game* game){
 
 void Game_lcd_single_draw(Game* game,int x,int y){
     switch (game->data.grid[y][x])
-    {
+    { //draw the updated part
     case obs:
         LCD_ShowPicture8x8((x-1)*block_size,(y-1)*block_size,obs);
         break;
@@ -190,6 +193,7 @@ void Button_input_update(Button_input* input){
     input->left = Get_Button(JOY_LEFT);
     input->up = Get_Button(JOY_CTR);
     input->confirm = Get_Button(BUTTON_1);
+    //if dir is pulled
     input->isPulled = (input->down || input->right || input->left || input->up);
 }
 
@@ -241,6 +245,7 @@ void Game_update(Game* game){
                 }
                 game->data.player_pos[0]=nx;
                 game->data.player_pos[1]=ny;
+                //only draw updated part
                 Game_lcd_single_draw(game,x,y);
                 Game_lcd_single_draw(game,nx,ny);
                 Game_lcd_single_draw(game,nnx,nny);
@@ -249,13 +254,10 @@ void Game_update(Game* game){
                 }
             }
         }
-        int len=1;
-        if(game->data.mov_num>9)
-            len=2;
-        else if (game->data.mov_num>99)
-            len=3;
-        else if (game->data.mov_num>999)
-            len=4;
+        int len=1;// show the number of moves
+        if(game->data.mov_num>9)    len=2;
+        else if (game->data.mov_num>99)   len=3;
+        else if (game->data.mov_num>999)   len=4;
         LCD_ShowNum(100,0,game->data.mov_num,len,WHITE);
     }
     /*TODO：and more……*/

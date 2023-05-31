@@ -25,7 +25,7 @@ void update_scoreboard(int scoreboard[3][4], Game* game){
     // lower, better
     int level=game->level;
     int score=game->data.mov_num;
-    scoreboard[level-1][3]=score;
+    scoreboard[level-1][3]=score; //use quicksort
     qsort(scoreboard[level-1],4,sizeof(int),comp);
 }
 
@@ -42,10 +42,12 @@ int main(void) {
         while (game.state != Winning) {
             Game_update(&game);
         }
+        // the scoreboard
         update_scoreboard(scoreboard,&game);
         if(End_stage(&game,scoreboard)==0){
             Game_init(&game);
         }else{
+            // if restart?
             game.data.remain_boxes = game.box_num;
             game.data.mov_num = 0;
             game.state = Playing;
