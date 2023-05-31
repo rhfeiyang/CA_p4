@@ -78,19 +78,12 @@ void Button_input_initialize(Button_input* input){
     input->isPulled = 0;
 }
 void Button_input_update(Button_input* input){
-    if(input->isPulled){
-        delay_1ms(300); // this should solve Input Keys Debouncing
-    }
     input->down = Get_Button(JOY_DOWN);
     input->right = Get_Button(JOY_RIGHT);
     input->left = Get_Button(JOY_LEFT);
     input->up = Get_Button(JOY_CTR);
     input->confirm = Get_Button(BUTTON_1);
-    if(input->down || input->right || input->left || input->up || input->confirm){
-        input->isPulled = 1;
-    }else{
-        input->isPulled = 0;
-    }
+    
 }
 #pragma endregion
 
