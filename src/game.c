@@ -255,9 +255,9 @@ void Game_update(Game* game){
             }
         }
         int len=1;// show the number of moves
-        if(game->data.mov_num>9)    len=2;
+        if(game->data.mov_num>999)    len=4;
         else if (game->data.mov_num>99)   len=3;
-        else if (game->data.mov_num>999)   len=4;
+        else if (game->data.mov_num>9)   len=2;
         LCD_ShowNum(100,0,game->data.mov_num,len,WHITE);
     }
     /*TODO：and more……*/
