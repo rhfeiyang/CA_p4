@@ -10,8 +10,8 @@ void select_stage(int *level_ret, int *box_num_ret){
     int box_num=1;
     LCD_Clear(BLACK);
     draw_select(level,box_num); // draw the select
-    LCD_ShowString(40,20,"Level:",WHITE);
-    LCD_ShowString(40,40,"Box:",WHITE);
+    LCD_ShowString(40,20,(const u8*)"Level:",WHITE);
+    LCD_ShowString(40,40,(const u8*)"Box:",WHITE);
     LCD_ShowNum(90,20,level,2,WHITE);
     LCD_ShowNum(90,40,box_num,2,WHITE);
     while(Get_BOOT0()==0){
@@ -48,20 +48,20 @@ int End_stage(Game* game, int scoreboard[3][4]){
     LCD_Clear(BLACK);
     // LCD_ShowString(0,10,"Steps:",WHITE);
     // LCD_ShowNum(50,10,game->data.mov_num,4,WHITE);
-    LCD_ShowString(0,0,"LV1:",WHITE); //scoreboard
+    LCD_ShowString(0,0,(const u8*)"LV1:",WHITE); //scoreboard
     if(scoreboard[0][0]!=999)  LCD_ShowNum(30,0, scoreboard[0][0],3,WHITE);
     if(scoreboard[0][1]!=999)  LCD_ShowNum(60,0, scoreboard[0][1],3,WHITE);
     if(scoreboard[0][2]!=999)  LCD_ShowNum(90,0, scoreboard[0][2],3,WHITE);
-    LCD_ShowString(0,20,"LV2:",WHITE); //scoreboard
+    LCD_ShowString(0,20,(const u8*)"LV2:",WHITE); //scoreboard
     if(scoreboard[1][0]!=999)  LCD_ShowNum(30,20,scoreboard[1][0],3,WHITE);
     if(scoreboard[1][1]!=999)  LCD_ShowNum(60,20,scoreboard[1][1],3,WHITE);
     if(scoreboard[1][2]!=999)  LCD_ShowNum(90,20,scoreboard[1][2],3,WHITE);
-    LCD_ShowString(0,40,"LV3:",WHITE); //scoreboard
+    LCD_ShowString(0,40,(const u8*)"LV3:",WHITE); //scoreboard
     if(scoreboard[2][0]!=999)  LCD_ShowNum(30,40,scoreboard[2][0],3,WHITE);
     if(scoreboard[2][1]!=999)  LCD_ShowNum(60,40,scoreboard[2][1],3,WHITE);
     if(scoreboard[2][2]!=999)  LCD_ShowNum(90,40,scoreboard[2][2],3,WHITE);
 
-    LCD_ShowString(0,60,"Back(any dir)",WHITE);
+    LCD_ShowString(0,60,(const u8*)"Back(any dir)",WHITE);
     // LCD_ShowString(0,50,"Quit(sw1)",WHITE);
     while(1){
         int down = Get_Button(JOY_DOWN);
@@ -99,10 +99,8 @@ void draw_snowflake(u16 x,u16 y,u16 r){
 
 void animation(){
     LCD_Clear(BLACK);
-    int start_time = 0;
     //LCD_ShowString(60,25,"Mygame",WHITE);
-    int rx,ry,r;
-    rx = 10;ry = 10;r=80;
+    int r = 80;
     int dx = 0;int dy=0;
     while(dx<LCD_W){
         LCD_DrawCircle(dx,LCD_H/2,10,BLUE);
@@ -125,7 +123,7 @@ void animation(){
     dy=20;
 
     while(dy<60){
-        LCD_ShowString(36,50,"Loading ...",RED);
+        LCD_ShowString(36,50,(const u8*)"Loading ...",RED);
         draw_snowflake(20,dy,6);
         draw_snowflake(50,dy-12,8);
         draw_snowflake(80,dy+20,8);
@@ -137,7 +135,7 @@ void animation(){
         dy++;
     }
     while(r>0){
-        LCD_ShowString(30,25,"Welcome to ...",WHITE);
+        LCD_ShowString(30,25,(const u8*)"Welcome to ...",WHITE);
         LCD_DrawCircle(LCD_W/2,LCD_H/2,r,BLUE);
         LCD_DrawRectangle(LCD_W/2-60, LCD_H/2-20, LCD_W/2+60, LCD_H/2+20,RED);
         delay_1ms(20);
@@ -145,7 +143,7 @@ void animation(){
         r-=2;
     }
     while(r<80){
-        LCD_ShowString(40,25,"Our game!",WHITE);
+        LCD_ShowString(40,25,(const u8*)"Our game!",WHITE);
         LCD_DrawCircle(LCD_W/2,LCD_H/2,r,BLUE);
         LCD_DrawRectangle(LCD_W/2-60, LCD_H/2-20, LCD_W/2+60, LCD_H/2+20,RED);
         delay_1ms(20);

@@ -1,7 +1,7 @@
 #ifndef WELCOME_H
 #define WELCOME_H
 #include "game.h"
-#include "lcd/lcd.h"
+typedef unsigned int u16;
 
 void draw_welcome();
 void draw_select(int level, int box_num);

@@ -39,7 +39,7 @@ int main(void) {
 /*This includes:initialize the newly created game's data/input + choose level and set the number of boxes*/
     Game game;
     Game_init(&game);
-    int scoreboard[3][4]={999,999,999,999,999,999,999,999,999,999,999,999};
+    int scoreboard[3][4]={{999,999,999,999},{999,999,999,999},{999,999,999,999}};
     while(1){
         while (game.state != Winning) {
             Game_update(&game);
