@@ -1,4 +1,5 @@
 # Project 4: Longan Nano minigame
+![demo](src/demo.jpg)
 
 This repo contains the framework code for your Project 4. 
 
